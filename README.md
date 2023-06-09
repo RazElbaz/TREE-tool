@@ -47,7 +47,7 @@ To use the "stree" tool, follow these steps:
    ```shell
    ./stree <directory-path>
    ```
-♥   Replace `directory-path` with the path to the directory for which you want to display the file tree or write: '.' .
+♥   Replace `directory-path` with the path to the directory for which you want to display the file tree or write: `.`    .
 
 ## Examples
 
@@ -64,7 +64,7 @@ Here are some example usages of the "stree" tool:
    ```shell
    ./stree /path/to/directory
    ```
- ♥   Replace `/path/to/directory` with the path to the directory for which you want to display the file tree or write: '.' .
+ ♥   Replace `/path/to/directory` with the path to the directory for which you want to display the file tree  or write: `.`    .
 ## Output
 
 The "stree" tool will display the file tree structure, along with the following details for each file or directory:
