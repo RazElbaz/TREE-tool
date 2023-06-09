@@ -32,8 +32,29 @@ void print_indentation(int depth) {
     }
 }
 
-int is_jpg_png_gif(const char* filename);
-int is_tar_gz_or_zip(const char* filename);
+int is_jpg_png_gif(const char* filename) {
+    const char* extension = strrchr(filename, '.');
+    if (extension != NULL) {
+        if (strcmp(extension, ".jpg") == 0 ||
+            strcmp(extension, ".png") == 0 ||
+            strcmp(extension, ".gif") == 0) {
+            return 1;
+        }
+    }
+    return 0;
+}
+
+int is_tar_gz_or_zip(const char* filename) {
+    const char* extension = strrchr(filename, '.');
+    if (extension != NULL) {
+        if (strcmp(extension, ".gz") == 0 ||
+            strcmp(extension, ".zip") == 0) {
+            return 1;
+        }
+    }
+    return 0;
+}
+
 void walk(const char* directory, const char* prefix, counter_t *counter, int depth) {
     file_info_t *head = NULL, *current, *iter;
     size_t size = 0, index;
