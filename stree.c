@@ -1,26 +1,4 @@
-#define _XOPEN_SOURCE 600 /* Get nftw() */
-#include <ftw.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <errno.h>
-#include <string.h>
-#include <dirent.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <pwd.h>
-#include <grp.h>
-
-typedef struct counter {
-  size_t dirs;
-  size_t files;
-} counter_t;
-
-typedef struct file_info {
-  char *name;
-  int is_dir;
-  struct file_info *next;
-} file_info_t;
+#include "stree.h"
 
 void print_indentation(int depth) {
   for (int i = 0; i < depth; i++) {
@@ -175,7 +153,6 @@ printf("%s[%s %-8s %-8s %10ld]  ", pointer, permissions, owner_name, group_name,
 if (is_dir) {
   printf("\033[1;34m%s\033[0m\n", name);  // Blue color for directories
 } else {
-  const char* extension = strrchr(name, '.');  // Declare the 'extension' variable here
   if (S_ISSOCK(file_stat.st_mode)) {
     printf("\033[1;93m%s\033[0m\n", name);  // Bright yellow color for socket files
   } else if (S_ISFIFO(file_stat.st_mode)) {
