@@ -22,7 +22,16 @@ typedef struct file_info {
     struct file_info *next;
 } file_info_t;
 
-void print_indentation(int depth);
+void print_indentation(int depth) {
+    for (int i = 0; i < depth; i++) {
+        if (i == depth - 1) {
+            printf(" ");
+        } else {
+            printf("│   ");
+        }
+    }
+}
+
 int is_jpg_png_gif(const char* filename);
 int is_tar_gz_or_zip(const char* filename);
 void walk(const char* directory, const char* prefix, counter_t *counter, int depth);
