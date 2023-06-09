@@ -1,5 +1,7 @@
 #include "stree.h"
 
+
+// Print indentation based on depth
 void print_indentation(int depth) {
   for (int i = 0; i < depth; i++) {
     if (i == depth - 1) {
@@ -9,10 +11,13 @@ void print_indentation(int depth) {
     }
   }
 }
+
+// Print program usage information
 void print_usage(const char *program_name) {
   fprintf(stderr, "Usage: %s directory-path\n", program_name);
 }
 
+// Print directory information
 void print_directory_info(const counter_t *counter) {
   const char *print_directory = (counter->dirs - 1 == 1) ? "directory" : "directories";
   const char *print_file = (counter->files == 1) ? "file" : "files";
@@ -20,10 +25,12 @@ void print_directory_info(const counter_t *counter) {
   printf("\n%zu %s, %zu %s\n", (counter->dirs > 0) ? (counter->dirs - 1) : 0, print_directory, counter->files, print_file);
 }
 
+// Print a directory name in colored text
 void print_colored_directory(const char *directory) {
   printf("\033[1;34m%s\033[0m\n", directory);  // Blue color for the top-level directory
 }
 
+// Check if a file has a JPG, PNG, or GIF extension
 int is_jpg_png_gif(const char* filename) {
   const char* extension = strrchr(filename, '.');
   if (extension != NULL) {
@@ -35,6 +42,8 @@ int is_jpg_png_gif(const char* filename) {
   }
   return 0;
 }
+
+// Check if a file has a TAR.GZ or ZIP extension
 int is_tar_gz_or_zip(const char* filename) {
   const char* extension = strrchr(filename, '.');
   if (extension != NULL) {
@@ -45,7 +54,6 @@ int is_tar_gz_or_zip(const char* filename) {
   }
   return 0;
 }
-
 
 void walk(const char* directory, const char* prefix, counter_t *counter, int depth) {
   file_info_t *head = NULL, *current, *iter;
