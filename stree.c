@@ -31,6 +31,21 @@ void print_indentation(int depth) {
     }
   }
 }
+void print_usage(const char *program_name) {
+  fprintf(stderr, "Usage: %s directory-path\n", program_name);
+}
+
+void print_directory_info(const counter_t *counter) {
+  const char *print_directory = (counter->dirs - 1 == 1) ? "directory" : "directories";
+  const char *print_file = (counter->files == 1) ? "file" : "files";
+
+  printf("\n%zu %s, %zu %s\n", (counter->dirs > 0) ? (counter->dirs - 1) : 0, print_directory, counter->files, print_file);
+}
+
+void print_colored_directory(const char *directory) {
+  printf("\033[1;34m%s\033[0m\n", directory);  // Blue color for the top-level directory
+}
+
 int is_jpg_png_gif(const char* filename) {
   const char* extension = strrchr(filename, '.');
   if (extension != NULL) {
@@ -52,6 +67,8 @@ int is_tar_gz_or_zip(const char* filename) {
   }
   return 0;
 }
+
+
 void walk(const char* directory, const char* prefix, counter_t *counter, int depth) {
   file_info_t *head = NULL, *current, *iter;
   size_t size = 0, index;
@@ -203,37 +220,21 @@ if (is_dir) {
   }
 }
 
+
+
 int main(int argc, char *argv[]) {
   if (argc != 2) {
-    fprintf(stderr, "Usage: %s directory-path\n", argv[0]);
+    print_usage(argv[0]);
     exit(EXIT_FAILURE);
   }
 
-  char* directory = argc > 1 ? argv[1] : ".";
-  printf("\033[1;34m%s\033[0m\n", directory);  // Blue color for the top-level directory
+  const char* directory = (argc > 1) ? argv[1] : ".";
+  print_colored_directory(directory);  // Print the top-level directory in blue
 
   counter_t counter = {0, 0};
-
   walk(directory, "", &counter, 0);
-  char* print_directory;
-  char* print_file;
 
-  if (counter.dirs - 1 == 1) {
-    print_directory = "directory";
-  } else {
-    print_directory = "directories";
-  }
-  if (counter.files == 1) {
-    print_file = "file";
-  } else {
-    print_file = "files";
-  }
-  printf("\n%zu %s, %zu %s\n",
-         counter.dirs > 0 ? counter.dirs - 1 : 0, // Subtract 1 from directories to exclude the top-level directory
-         print_directory,
-         counter.files,
-         print_file);
+  print_directory_info(&counter);
 
   return 0;
 }
-
