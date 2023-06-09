@@ -155,10 +155,26 @@ int main(int argc, char *argv[]) {
   printf("\033[1;34m%s\033[0m\n", directory);  // Blue color for the top-level directory
 
   counter_t counter = {0, 0};
-  walk(directory, "", &counter, 0);
 
-  printf("\n%zu directories, %zu files\n",
-    counter.dirs ? counter.dirs - 1 : 0, counter.files);
+  walk(directory, "", &counter, 0);
+  char* print_directory;
+  char* print_file;
+
+  if (counter.dirs - 1 == 1) {
+    print_directory = "directory";
+  } else {
+    print_directory = "directories";
+  }
+  if (counter.files == 1) {
+    print_file = "file";
+  } else {
+    print_file = "files";
+  }
+  printf("\n%zu %s, %zu %s\n",
+         counter.dirs > 0 ? counter.dirs - 1 : 0, // Subtract 1 from directories to exclude the top-level directory
+         print_directory,
+         counter.files,
+         print_file);
 
   return 0;
 }
