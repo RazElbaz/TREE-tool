@@ -120,4 +120,21 @@ At the end of the output, the tool will display the total number of directories 
 3 directories, 4 files
 
 ```
+## Examples of running the program:
+ls:
+![ls](https://github.com/RazElbaz/TREE-tool/blob/main/pictures/ls.png_
 
+1. Run `stree .` to display the directory tree for the current directory. This will give you a hierarchical listing of all subdirectories and files.
+![stree](https://github.com/RazElbaz/TREE-tool/blob/main/pictures/stree.png)
+
+2. Run `stree AllFileTypes` to view the directory tree specifically for the "AllFileTypes" directory. This will provide a detailed listing of its subdirectories and files.
+![AllFileTypes](https://github.com/RazElbaz/TREE-tool/blob/main/pictures/AllFileTypes.png)
+
+3. Run `stree check` to generate the directory tree for the "check" directory. This will display the nested structure of the "check" directory and its subdirectories.
+![check](https://github.com/RazElbaz/TREE-tool/blob/main/pictures/check.png)
+
+4. Run `stree dicFIle` to visualize the directory tree for the "dicFIle" directory. This will show the subdirectory "dic" within "dicFIle" and any files contained within it.
+![dicFIle](https://github.com/RazElbaz/TREE-tool/blob/main/pictures/dicFIle.png)
+
+5. Run `stree dicNOfile` to examine the directory tree for the "dicNOfile" directory. Since it doesn't have any subdirectories, only the "dicNOfile" directory will be displayed.
+![dicNOfile](https://github.com/RazElbaz/TREE-tool/blob/main/pictures/dicNOfile.png)
