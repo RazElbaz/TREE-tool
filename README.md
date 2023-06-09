@@ -19,7 +19,7 @@ When executed, "stree" recursively traverses the directory and its subdirectorie
 
 To enhance the readability of the output, "stree" utilizes special characters to represent the hierarchical relationship between directories. The tool also applies different colors to highlight specific types of files, making it easier to identify directories, executable files, image files, and more.
 
-## The task
+## Task Description
 1. Implement the "stree" tool to print the file tree structure in long mode.
 2. Ensure that the output includes the following information for each file/directory:
    - Permissions: The permissions of the file/directory.
@@ -31,6 +31,7 @@ To enhance the readability of the output, "stree" utilizes special characters to
 5. Submit the following files:
    - The implementation code for the "stree" tool.
    - A working makefile to build the tool.
+   
 ## Getting Started
 
 To use the "stree" tool, follow these steps:
@@ -85,10 +86,14 @@ The tool uses various colors to distinguish different types of files:
 ## Example Output
 ```
 .
-├── [-rwxr-xr-x  user1  group1  4096]  file1
-├── [drwxr-xr-x  user1  group1  4096]  directory1
-│   ├── [-rw-r--r--  user1  group1  1024]  file2
-│   └── [-rw-r--r--  user1  group1  2048]  file3
-└── [-rwxr-xr-x  user2  group2  8192]  file4
+├── [drwxr-xr-x   user1   group1       4096]  directory1
+│   ├── [-rw-r--r--   user1   group1       1024]  file1.txt
+│   └── [-rw-r--r--   user1   group1        512]  file2.txt
+├── [drwxr-xr-x   user2   group2       4096]  directory2
+│   └── [-rw-r--r--   user2   group2        256]  file3.txt
+└── [-rw-r--r--   user3   group3        128]  file4.txt
+
+3 directories, 4 files
+
 ```
 
