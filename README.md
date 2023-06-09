@@ -47,7 +47,7 @@ To use the "stree" tool, follow these steps:
    ```shell
    ./stree <directory-path>
    ```
-
+♥   Replace `directory-path` with the path to the directory for which you want to display the file tree.
 
 ## Examples
 
@@ -64,6 +64,7 @@ Here are some example usages of the "stree" tool:
    ```shell
    ./stree /path/to/directory
    ```
+ ♥   Replace `/path/to/directory` with the path to the directory for which you want to display the file tree.
 ## Output
 
 The "stree" tool will display the file tree structure, along with the following details for each file or directory:
@@ -80,9 +81,32 @@ The tool uses various colors to distinguish different types of files:
 - Green: Executable files
 - Dark Yellow: Block or character device files
 - Purple: JPG, PNG, or GIF files
-- Red: Orphaned symbolic links, .tar.gz, or .zip files
+- Red: .tar.gz, or .zip files
 
+The "stree" tool will display the file tree structure in the following format:
 
+```
+.
+├── [permissions   user       group           size]  name
+│   ├── [permissions   user       group           size]  name
+│   └── [permissions   user       group           size]  name
+├── [permissions   user       group           size]  name
+│   └── [permissions   user       group           size]  name
+└── [permissions   user       group           size]  name
+
+X directories, Y files
+```
+
+- Each line represents a file or directory in the tree.
+- The permissions field displays the file's permissions, including the file type and access permissions for the owner, group, and others.
+- The user field shows the owner of the file.
+- The group field displays the group associated with the file.
+- The size field represents the size of the file in bytes.
+- The name field shows the name of the file or directory.
+
+Note: The name of directories will be displayed in blue, while special file types will have different colors.
+
+At the end of the output, the tool will display the total number of directories and files found in the specified directory.  
 ## Example Output
 ```
 .
