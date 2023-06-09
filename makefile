@@ -1,4 +1,4 @@
-stree: stree.c
+stree: stree.c stree.h
 	gcc -o stree stree.c
 
 clean:
