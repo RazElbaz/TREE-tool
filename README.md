@@ -1,4 +1,4 @@
-# TREE-tool
+# TREE-tool : stree - File Tree Printing Tool
 implement the "tree" tool in a long mode, printing the file tree with permissions, user and group, and size information.
 
 ## written by ✨
@@ -12,16 +12,14 @@ implement the "tree" tool in a long mode, printing the file tree with permission
   </tr>
 </table>
 
-# Task 3: stree - File Tree Printing Tool
-
 ## Description
-The task requires implementing a file tree printing tool called "stree" in long mode. This tool should display the file tree structure along with permissions, user and group information, and size. The expected output format is similar to the provided picture.
+The "stree" tool is a custom implementation of the "tree" command, developed as a student project. It is designed to provide a detailed and visually appealing representation of the file tree structure within a specified directory.
 
-The default behavior of the tool is to start from the current folder and print the file tree downward. To facilitate directory tree walking, two example files (ftw1.c and ftw2.c) are provided, and it is recommended to understand them before starting the implementation.
+When executed, "stree" recursively traverses the directory and its subdirectories, printing the name of each file and directory encountered. Additionally, it displays various information for each entry, including permissions, user, group, and size.
 
-To create the special tree characters (-, |, etc.), you can directly copy them from the original tree terminal window.
+To enhance the readability of the output, "stree" utilizes special characters to represent the hierarchical relationship between directories. The tool also applies different colors to highlight specific types of files, making it easier to identify directories, executable files, image files, and more.
 
-## Instructions
+## The task
 1. Implement the "stree" tool to print the file tree structure in long mode.
 2. Ensure that the output includes the following information for each file/directory:
    - Permissions: The permissions of the file/directory.
@@ -33,6 +31,56 @@ To create the special tree characters (-, |, etc.), you can directly copy them f
 5. Submit the following files:
    - The implementation code for the "stree" tool.
    - A working makefile to build the tool.
+## Getting Started
+
+To use the "stree" tool, follow these steps:
+
+1. Build the tool using the provided Makefile:
+
+   ```shell
+   make
+   ```
+
+2. Run the "stree" tool with the desired directory path:
+
+   ```shell
+   ./stree <directory-path>
+   ```
+
+
+## Examples
+
+Here are some example usages of the "stree" tool:
+
+1. Print the file tree for the current directory:
+
+   ```shell
+   ./stree .
+   ```
+
+2. Print the file tree for a specific directory:
+
+   ```shell
+   ./stree /path/to/directory
+   ```
+## Output
+
+The "stree" tool will display the file tree structure, along with the following details for each file or directory:
+
+- Permissions
+- Owner
+- Group
+- Size
+
+The tool uses various colors to distinguish different types of files:
+
+- Blue: Directories
+- Bright Yellow: Pipes
+- Green: Executable files
+- Dark Yellow: Block or character device files
+- Purple: JPG, PNG, or GIF files
+- Red: Orphaned symbolic links, .tar.gz, or .zip files
+
 
 ## Example Output
 ```
