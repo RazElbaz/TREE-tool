@@ -145,4 +145,20 @@ void walk(const char* directory, const char* prefix, counter_t *counter, int dep
         free(current);
     }
 }
+int main(int argc, char *argv[]) {
+  if (argc != 2) {
+    fprintf(stderr, "Usage: %s directory-path\n", argv[0]);
+    exit(EXIT_FAILURE);
+  }
 
+  char* directory = argc > 1 ? argv[1] : ".";
+  printf("\033[1;34m%s\033[0m\n", directory);  // Blue color for the top-level directory
+
+  counter_t counter = {0, 0};
+  walk(directory, "", &counter, 0);
+
+  printf("\n%zu directories, %zu files\n",
+    counter.dirs ? counter.dirs - 1 : 0, counter.files);
+
+  return 0;
+}
