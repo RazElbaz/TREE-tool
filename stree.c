@@ -57,17 +57,22 @@ int is_tar_gz_or_zip(const char* filename) {
 
 // Recursive function to walk through a directory and its subdirectories
 void walk(const char* directory, const char* prefix, counter_t* counter, int depth) {
-  file_info_t* head = NULL;
-  file_info_t* current;
-  file_info_t* iter;
-  size_t size = 0;
-  size_t index;
-  struct dirent* file_dirent;
-  DIR* dir_handle;
-  char* full_path;
-  char* segment;
-  char* pointer;
-  char* next_prefix;
+// Linked list of file information
+file_info_t* head = NULL;  // Head of the linked list
+file_info_t* current;     // Current node being processed
+file_info_t* iter;        // Iterator for traversing the linked list
+
+size_t size = 0;          // Size of the linked list
+size_t index;             // Index for iteration
+
+struct dirent* file_dirent;  // Directory entry structure
+DIR* dir_handle;             // Directory handle
+
+char* full_path;          // Full path of a file/directory
+char* segment;            // Indentation segment
+char* pointer;            // Pointer character for tree visualization
+char* next_prefix;        // Next prefix for recursive calls
+
 
   // Open the directory
   dir_handle = opendir(directory);
@@ -164,18 +169,19 @@ void walk(const char* directory, const char* prefix, counter_t* counter, int dep
 
 
     char permissions[11];
-    // Generate the permissions string based on file_stat.st_mode
-    sprintf(permissions, "%s%s%s%s%s%s%s%s%s%s",
-            (S_ISDIR(file_stat.st_mode)) ? "d" : "-",
-            (file_stat.st_mode & S_IRUSR) ? "r" : "-",
-            (file_stat.st_mode & S_IWUSR) ? "w" : "-",
-            (file_stat.st_mode & S_IXUSR) ? "x" : "-",
-            (file_stat.st_mode & S_IRGRP) ? "r" : "-",
-            (file_stat.st_mode & S_IWGRP) ? "w" : "-",
-            (file_stat.st_mode & S_IXGRP) ? "x" : "-",
-            (file_stat.st_mode & S_IROTH) ? "r" : "-",
-            (file_stat.st_mode & S_IWOTH) ? "w" : "-",
-            (file_stat.st_mode & S_IXOTH) ? "x" : "-");
+
+// Generate the permissions string based on file_stat.st_mode
+sprintf(permissions, "%s%s%s%s%s%s%s%s%s%s",
+        (S_ISDIR(file_stat.st_mode)) ? "d" : "-",                     // Check if it's a directory
+        (file_stat.st_mode & S_IRUSR) ? "r" : "-",                   // Check if the owner has read permission
+        (file_stat.st_mode & S_IWUSR) ? "w" : "-",                   // Check if the owner has write permission
+        (file_stat.st_mode & S_IXUSR) ? "x" : "-",                   // Check if the owner has execute permission
+        (file_stat.st_mode & S_IRGRP) ? "r" : "-",                   // Check if the group has read permission
+        (file_stat.st_mode & S_IWGRP) ? "w" : "-",                   // Check if the group has write permission
+        (file_stat.st_mode & S_IXGRP) ? "x" : "-",                   // Check if the group has execute permission
+        (file_stat.st_mode & S_IROTH) ? "r" : "-",                   // Check if others have read permission
+        (file_stat.st_mode & S_IWOTH) ? "w" : "-",                   // Check if others have write permission
+        (file_stat.st_mode & S_IXOTH) ? "x" : "-");                   // Check if others have execute permission
 
     printf("%s", prefix);
     print_indentation(depth);
