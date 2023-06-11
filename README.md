@@ -12,6 +12,14 @@ implement the "tree" tool in a long mode, printing the file tree with permission
   </tr>
 </table>
 
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><img src="[https://avatars.githubusercontent.com/u/93310416?v=4](https://www.ariel.ac.il/wp/ran-dubin/wp-content/uploads/sites/353/2022/07/randubin_profile-300x200.jpeg.webp)" width="100px;" alt="Raz Elbaz"/><br /><sub><b>Raz Elbaz</b></sub></a><br /><a href="https://github.com/RazElbaz" title="Code">💻</a> <br /> </td>
+  </tr>
+</table>
 ## Description
 The "stree" tool is a custom implementation of the "tree" command, developed as a student project. It is designed to provide a detailed and visually appealing representation of the file tree structure within a specified directory.
 
